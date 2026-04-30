@@ -1,22 +1,18 @@
 using UnityEngine;
 
-public class Platform : MonoBehaviour
+public class BoostPlatform : MonoBehaviour
 {
-    public float targetAcceleration = 12f;
+    public float boostAcceleration = 25f;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.relativeVelocity.y <= 0f)
+        if (collision.gameObject.CompareTag("Player") && collision.relativeVelocity.y <= 0.1f)
         {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                float m = rb.mass;
-                float a = targetAcceleration;
-                float forceAmount = m * a;
-
-                Vector2 force = Vector2.up * forceAmount;
-                rb.AddForce(force, ForceMode2D.Impulse);
+                float forceAmount = rb.mass * boostAcceleration;
+                rb.AddForce(Vector2.up * forceAmount, ForceMode2D.Impulse);
 
                 Object.FindFirstObjectByType<PlatformSpawner>().SpawnPlatform();
             }

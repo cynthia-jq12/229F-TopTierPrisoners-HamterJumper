@@ -3,28 +3,48 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private float moveInput;
-
-    public float moveSpeed = 7f;
+    public float rotationSpeed = 150f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
-    {
-        moveInput = Input.GetAxisRaw("Horizontal");
-    }
-
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        float moveInput = Input.GetAxis("Horizontal");
 
-        if (moveInput != 0)
+        if (Mathf.Abs(moveInput) > 0.1f)
         {
-            float rotationAmount = moveInput * -10f;
-            rb.AddTorque(rotationAmount);
+            rb.AddTorque(-moveInput * rotationSpeed * Time.fixedDeltaTime);
+
+            float moveSpeed = 5f;
+            rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+
+            rb.linearVelocity = new Vector2(Mathf.Clamp(rb.linearVelocity.x, -moveSpeed, moveSpeed), rb.linearVelocity.y);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x * 0.95f, rb.linearVelocity.y);
+        }
+
+        HandleScreenWrap();
+    }
+
+    void HandleScreenWrap()
+    {
+        float camHeight = Camera.main.orthographicSize;
+        float camWidth = camHeight * Camera.main.aspect;
+
+        float limitX = camWidth + 0.5f;
+
+        if (transform.position.x > limitX)
+        {
+            transform.position = new Vector3(-limitX + 0.1f, transform.position.y, transform.position.z);
+        }
+        else if (transform.position.x < -limitX)
+        {
+            transform.position = new Vector3(limitX - 0.1f, transform.position.y, transform.position.z);
         }
     }
 }
