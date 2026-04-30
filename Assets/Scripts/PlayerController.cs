@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float maxJumpForce = 20f;
-    public float chargeRate = 12f;
-    private float currentJumpForce = 0f;
-    private bool isCharging = false;
     private Rigidbody2D rb;
+    private float moveInput;
+
+    public float moveSpeed = 7f;
 
     void Start()
     {
@@ -15,23 +14,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isCharging = true;
-            currentJumpForce = 0f;
-        }
+        moveInput = Input.GetAxisRaw("Horizontal");
+    }
 
-        if (Input.GetKey(KeyCode.Space) && isCharging)
-        {
-            currentJumpForce += chargeRate * Time.deltaTime;
-            currentJumpForce = Mathf.Clamp(currentJumpForce, 0, maxJumpForce);
-        }
+    void FixedUpdate()
+    {
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        if (Input.GetKeyUp(KeyCode.Space) && isCharging)
+        if (moveInput != 0)
         {
-            float forceMagnitude = rb.mass * currentJumpForce;
-            rb.AddForce(new Vector2(0, forceMagnitude), ForceMode2D.Impulse);
-            isCharging = false;
+            float rotationAmount = moveInput * -10f;
+            rb.AddTorque(rotationAmount);
         }
     }
 }
