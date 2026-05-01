@@ -17,6 +17,10 @@ public class OneTimePlatform : MonoBehaviour
 
                 float forceAmount = rb.mass * targetAcceleration;
                 rb.AddForce(Vector2.up * forceAmount, ForceMode2D.Impulse);
+                if (SoundManager.Instance != null && SoundManager.Instance.sfxSource != null)
+                {
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.jumpSound);
+                }
 
                 Object.FindFirstObjectByType<PlatformSpawner>().SpawnPlatform();
 

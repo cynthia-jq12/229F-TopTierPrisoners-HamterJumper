@@ -40,5 +40,6 @@ public class GameManager : MonoBehaviour
         {
             MenuHandle.Instance.UpdateScoreDisplay();
         }
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.gameOverSound);
     }
 }
