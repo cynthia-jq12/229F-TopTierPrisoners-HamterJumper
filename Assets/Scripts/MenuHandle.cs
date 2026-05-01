@@ -1,8 +1,34 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuHandle : MonoBehaviour
 {
+    public TextMeshProUGUI highScoreText;
+
+    void Start()
+    {
+        UpdateScoreDisplay();
+    }
+
+    public void UpdateScoreDisplay()
+    {
+        int highScore = PlayerPrefs.GetInt("HighScore", 0);
+
+        if (highScoreText != null)
+        {
+            highScoreText.text = "Best High: " + highScore + "m";
+        }
+    }
+
+    public void ResetHighScore()
+    {
+        PlayerPrefs.DeleteKey("HighScore");
+        PlayerPrefs.Save();
+
+        UpdateScoreDisplay();
+    }
+
     public void Game() { Time.timeScale = 1f; SceneManager.LoadScene("HamsterJumper"); }
     public void Credit() { SceneManager.LoadScene("CreditScene"); }
     public void Menu() { SceneManager.LoadScene("MainMenu"); }

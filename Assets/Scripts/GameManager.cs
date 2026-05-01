@@ -22,6 +22,12 @@ public class GameManager : MonoBehaviour
                 highestY = playerTransform.position.y;
                 currentScore = Mathf.FloorToInt(highestY);
                 scoreText.text = "High: " + currentScore + "m";
+
+                if (currentScore > PlayerPrefs.GetInt("HighScore", 0))
+                {
+                    PlayerPrefs.SetInt("HighScore", currentScore);
+                    PlayerPrefs.Save();
+                }
             }
         }
     }
