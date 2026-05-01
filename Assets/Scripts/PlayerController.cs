@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddTorque(-moveInput * rotationSpeed * Time.fixedDeltaTime);
 
-            float moveSpeed = 5f;
+            float moveSpeed = 6f;
             rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
             rb.linearVelocity = new Vector2(Mathf.Clamp(rb.linearVelocity.x, -moveSpeed, moveSpeed), rb.linearVelocity.y);
@@ -26,25 +26,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x * 0.95f, rb.linearVelocity.y);
-        }
-
-        HandleScreenWrap();
-    }
-
-    void HandleScreenWrap()
-    {
-        float camHeight = Camera.main.orthographicSize;
-        float camWidth = camHeight * Camera.main.aspect;
-
-        float limitX = camWidth + 0.5f;
-
-        if (transform.position.x > limitX)
-        {
-            transform.position = new Vector3(-limitX + 0.1f, transform.position.y, transform.position.z);
-        }
-        else if (transform.position.x < -limitX)
-        {
-            transform.position = new Vector3(limitX - 0.1f, transform.position.y, transform.position.z);
         }
     }
 }
