@@ -4,7 +4,13 @@ using TMPro;
 
 public class MenuHandle : MonoBehaviour
 {
+    public static MenuHandle Instance;
     public TextMeshProUGUI highScoreText;
+
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
 
     void Start()
     {
@@ -25,7 +31,6 @@ public class MenuHandle : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("HighScore");
         PlayerPrefs.Save();
-
         UpdateScoreDisplay();
     }
 

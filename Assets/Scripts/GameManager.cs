@@ -36,5 +36,9 @@ public class GameManager : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         Time.timeScale = 0f;
+        if (MenuHandle.Instance != null)
+        {
+            MenuHandle.Instance.UpdateScoreDisplay();
+        }
     }
 }
