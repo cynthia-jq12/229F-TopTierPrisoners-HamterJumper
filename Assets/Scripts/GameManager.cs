@@ -1,31 +1,34 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public Transform playerTransform;
+    public TextMeshProUGUI scoreText;
     public GameObject gameOverPanel;
-    public TextMeshProUGUI pointText;
-    private int score = 0;
+
+    private float highestY = 0f;
+    private int currentScore = 0;
 
     void Awake() { Instance = this; }
 
-    public void AddScore(int points)
+    void Update()
     {
-        score += points;
-        pointText.text = "Score: " + score;
+        if (playerTransform != null && Time.timeScale > 0)
+        {
+            if (playerTransform.position.y > highestY)
+            {
+                highestY = playerTransform.position.y;
+                currentScore = Mathf.FloorToInt(highestY);
+                scoreText.text = "High: " + currentScore + "m";
+            }
+        }
     }
 
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
         Time.timeScale = 0f;
-    }
-
-    public void Restart()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
