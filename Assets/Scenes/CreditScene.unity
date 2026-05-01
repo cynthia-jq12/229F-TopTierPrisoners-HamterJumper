@@ -492,11 +492,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
-<<<<<<< Updated upstream
 --- !u!1 &888935907
-=======
---- !u!1 &553081108
->>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -504,50 +500,29 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< Updated upstream
   - component: {fileID: 888935909}
   - component: {fileID: 888935908}
   m_Layer: 0
-  m_Name: BGM_sound
-=======
-  - component: {fileID: 553081110}
-  - component: {fileID: 553081109}
-  m_Layer: 0
   m_Name: BGM_Sound
->>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< Updated upstream
 --- !u!82 &888935908
-=======
---- !u!82 &553081109
->>>>>>> Stashed changes
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_GameObject: {fileID: 888935907}
-=======
-  m_GameObject: {fileID: 553081108}
->>>>>>> Stashed changes
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-<<<<<<< Updated upstream
   m_Resource: {fileID: 8300000, guid: bacbfb31485229a4186f9af0df165008, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
-=======
-  m_Resource: {fileID: 8300000, guid: 589dbcec35d85fd44942928d38fcf36d, type: 3}
-  m_PlayOnAwake: 1
   m_Volume: 0.4
->>>>>>> Stashed changes
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -631,27 +606,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< Updated upstream
 --- !u!4 &888935909
-=======
---- !u!4 &553081110
->>>>>>> Stashed changes
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_GameObject: {fileID: 888935907}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-=======
-  m_GameObject: {fileID: 553081108}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 574.8, z: 0}
->>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1001,8 +965,4 @@ SceneRoots:
   - {fileID: 287899090}
   - {fileID: 1158119981}
   - {fileID: 1773377063}
-<<<<<<< Updated upstream
   - {fileID: 888935909}
-=======
-  - {fileID: 553081110}
->>>>>>> Stashed changes
