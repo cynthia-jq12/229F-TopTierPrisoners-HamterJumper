@@ -8,7 +8,6 @@ public class GameOverHandler : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Player Fell Down!");
-            SceneManager.LoadScene("CreditScene");
         }
     }
 }
